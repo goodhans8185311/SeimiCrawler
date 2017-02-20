@@ -29,7 +29,7 @@ public class MutiPageNewsCrawler extends BaseSeimiCrawler {
             Map<String,String> meta = response.getMeta()!=null?response.getMeta():new HashMap<String, String>();
             String preBody = meta.get("body")!=null?meta.get("body"):"";
             meta.put("body",preBody+StringUtils.join(document.sel("//div[@id='cc2']//text()"),""));
-
+            System.out.println("response url = " + response.getUrl());
             String urlPrefix = response.getUrl().substring(0,response.getUrl().lastIndexOf("/")+1);
             //拿到下一页的地址后缀
             String nextPage = StringUtils.join(document.sel("//div[@class='page1']/a[text()*='下一页']/@href"),"");
